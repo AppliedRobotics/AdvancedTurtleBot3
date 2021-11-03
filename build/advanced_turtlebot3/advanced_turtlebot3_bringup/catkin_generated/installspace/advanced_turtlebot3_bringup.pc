@@ -1,0 +1,8 @@
+prefix=/home/ruslan/my_catkin_ws/install
+
+Name: advanced_turtlebot3_bringup
+Description: Description of advanced_turtlebot3_bringup
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

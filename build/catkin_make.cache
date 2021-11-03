@@ -1,0 +1,2 @@
+advanced_turtlebot3/advanced_turtlebot3_bringup:advanced_turtlebot3/advanced_turtlebot3_teleop:hls_lfcd_lds_driver:turtlebot3_msgs
+-DCATKIN_DEVEL_PREFIX=/home/ruslan/my_catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/ruslan/my_catkin_ws/install -G Unix Makefiles
