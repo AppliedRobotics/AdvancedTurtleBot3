@@ -9,5 +9,5 @@
     <arg name="set_frame_id" value="$(arg set_lidar_frame_id)"/>
   </include>
 
-  <node pkg="turtlebot3_bringup" type="turtlebot3_diagnostics" name="turtlebot3_diagnostics" output="screen"/>
+  <node pkg="turtlebot3_bringup" type="turtlebot3_diagnostics" name="urtlebot3_diagnostics" output="screen"/>
 </launch>

@@ -19,9 +19,6 @@ void cbMessage(const geometry_msgs::Vector3 &arr) {
   vx  = arr.x;
   vth = arr.y;
 
-
-  // vx = (0.033 * (VX + VTH)) / 2;
-  // vth = (0.033 * (VX - VTH)) / 0.16;
 }
 
 int main(int argc, char** argv){
@@ -31,28 +28,17 @@ int main(int argc, char** argv){
   ros::Publisher odom_pub = n.advertise<nav_msgs::Odometry>("odom", 50);
   ros::Subscriber sub = n.subscribe("velocity_data", 1000, cbMessage);
   tf::TransformBroadcaster odom_broadcaster;
-
-  
+  tf::TransformBroadcaster lidar_broadcaster;
 
   ros::Time current_time, last_time;
   current_time = ros::Time::now();
   last_time = ros::Time::now();
-
+    ROS_INFO("LOL");
   ros::Rate r(100);
   while(n.ok()){
 
-    ros::spinOnce();               // check for incoming messages
+    ros::spinOnce();              
     current_time = ros::Time::now();
-
-    //compute odometry in a typical way given the velocities of the robot
-    // double dt = (current_time - last_time).toSec();
-    // double delta_x = (vx * cos(th) - vy * sin(th)) * dt;
-    // double delta_y = (vx * sin(th) + vy * cos(th)) * dt;
-    // double delta_th = vth * dt;
-
-    // x += delta_x;
-    // y += delta_y;
-    // th += delta_th;
 
     double temp1 = (0.033 * (vx + vth)) / 2;
     double temp2 = (0.033 * (vth - vx)) / 0.155;
@@ -71,15 +57,29 @@ int main(int argc, char** argv){
     geometry_msgs::TransformStamped odom_trans;
     odom_trans.header.stamp = current_time;
     odom_trans.header.frame_id = "odom";
-    odom_trans.child_frame_id = "base_link";
+    odom_trans.child_frame_id = "base_footprint";
 
     odom_trans.transform.translation.x = x;
     odom_trans.transform.translation.y = y;
     odom_trans.transform.translation.z = 0.0;
     odom_trans.transform.rotation = odom_quat;
 
+
+
+    geometry_msgs::TransformStamped lidar_trans;
+    lidar_trans.header.stamp = current_time;
+    lidar_trans.header.frame_id = "base_footprint";
+    lidar_trans.child_frame_id = "base_scan";
+
+    lidar_trans.transform.translation.x = 0;
+    lidar_trans.transform.translation.y = 0;
+    lidar_trans.transform.translation.z = 0.15;
+    lidar_trans.transform.rotation = odom_quat;
+
     //send the transform
+    lidar_broadcaster.sendTransform(lidar_trans);
     odom_broadcaster.sendTransform(odom_trans);
+    
 
     //next, we'll publish the odometry message over ROS
     nav_msgs::Odometry odom;
