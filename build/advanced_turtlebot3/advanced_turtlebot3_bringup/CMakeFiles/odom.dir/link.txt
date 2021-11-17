@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/odom.dir/src/odom.cpp.o  -o /home/ruslan/my_catkin_ws/devel/lib/advanced_turtlebot3_bringup/odom 

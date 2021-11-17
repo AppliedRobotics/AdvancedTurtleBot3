@@ -131,10 +131,13 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/ruslan/my_catkin_ws/build/gtest/cmake_install.cmake")
+  include("/home/ruslan/my_catkin_ws/build/advanced_turtlebot3/advanced_turtlebot3_navigation/cmake_install.cmake")
   include("/home/ruslan/my_catkin_ws/build/turtlebot3_msgs/cmake_install.cmake")
   include("/home/ruslan/my_catkin_ws/build/advanced_turtlebot3/advanced_turtlebot3_teleop/cmake_install.cmake")
+  include("/home/ruslan/my_catkin_ws/build/advanced_turtlebot3/advanced_turtlebot3_slam/cmake_install.cmake")
   include("/home/ruslan/my_catkin_ws/build/hls_lfcd_lds_driver/cmake_install.cmake")
   include("/home/ruslan/my_catkin_ws/build/advanced_turtlebot3/advanced_turtlebot3_bringup/cmake_install.cmake")
+  include("/home/ruslan/my_catkin_ws/build/advanced_turtlebot3/turtlebot3_description/cmake_install.cmake")
 
 endif()
 

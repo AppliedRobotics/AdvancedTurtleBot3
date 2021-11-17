@@ -80,6 +80,18 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -89,17 +101,6 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -123,17 +124,16 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -197,231 +197,6 @@ hlds_laser_publisher/fast:
 	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/hlds_laser_publisher.dir/build.make hls_lfcd_lds_driver/CMakeFiles/hlds_laser_publisher.dir/build
 .PHONY : hlds_laser_publisher/fast
 
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_eus: hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-.PHONY : roscpp_generate_messages_eus
-
-# fast build rule for target.
-roscpp_generate_messages_eus/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_eus.dir/build.make hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_eus.dir/build
-.PHONY : roscpp_generate_messages_eus/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_nodejs/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
-.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_cpp: hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_cpp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_cpp/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
-.PHONY : sensor_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_eus: hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_eus
-
-# fast build rule for target.
-sensor_msgs_generate_messages_eus/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
-.PHONY : sensor_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_py: hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-.PHONY : roscpp_generate_messages_py
-
-# fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_py.dir/build.make hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_nodejs: hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-.PHONY : roscpp_generate_messages_nodejs
-
-# fast build rule for target.
-roscpp_generate_messages_nodejs/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
-.PHONY : roscpp_generate_messages_nodejs/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_eus: hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_eus
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_eus/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
-.PHONY : rosgraph_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_lisp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_lisp/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_py: hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_py
-
-# fast build rule for target.
-sensor_msgs_generate_messages_py/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
-.PHONY : sensor_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_lisp: hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-.PHONY : roscpp_generate_messages_lisp
-
-# fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_py: hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_py
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_py/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make hls_lfcd_lds_driver/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
-.PHONY : rosgraph_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_nodejs: hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-sensor_msgs_generate_messages_nodejs/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
-.PHONY : sensor_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_cpp: hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-.PHONY : roscpp_generate_messages_cpp
-
-# fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make hls_lfcd_lds_driver/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
-
-# Convenience name for target.
-hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-.PHONY : hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_lisp: hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_lisp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_lisp/fast:
-	cd /home/ruslan/my_catkin_ws/build && $(MAKE) -f hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make hls_lfcd_lds_driver/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
-.PHONY : sensor_msgs_generate_messages_lisp/fast
-
 src/hlds_laser_publisher.o: src/hlds_laser_publisher.cpp.o
 
 .PHONY : src/hlds_laser_publisher.o
@@ -484,28 +259,13 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... install/local"
+	@echo "... install"
 	@echo "... list_install_components"
-	@echo "... test"
-	@echo "... hlds_laser_segment_publisher"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test"
+	@echo "... hlds_laser_segment_publisher"
 	@echo "... hlds_laser_publisher"
-	@echo "... roscpp_generate_messages_eus"
-	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... sensor_msgs_generate_messages_cpp"
-	@echo "... sensor_msgs_generate_messages_eus"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... install"
-	@echo "... roscpp_generate_messages_nodejs"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
-	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... sensor_msgs_generate_messages_py"
-	@echo "... roscpp_generate_messages_lisp"
-	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... sensor_msgs_generate_messages_nodejs"
-	@echo "... roscpp_generate_messages_cpp"
-	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... src/hlds_laser_publisher.o"
 	@echo "... src/hlds_laser_publisher.i"
 	@echo "... src/hlds_laser_publisher.s"

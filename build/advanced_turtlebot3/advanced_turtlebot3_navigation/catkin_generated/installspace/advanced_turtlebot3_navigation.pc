@@ -1,0 +1,8 @@
+prefix=/home/ruslan/my_catkin_ws/install
+
+Name: advanced_turtlebot3_navigation
+Description: Description of advanced_turtlebot3_navigation
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

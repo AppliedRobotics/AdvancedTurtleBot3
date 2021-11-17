@@ -67,7 +67,7 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        base_link:
+        base_footprint:
           Alpha: 1
           Show Axes: false
           Show Trail: false
