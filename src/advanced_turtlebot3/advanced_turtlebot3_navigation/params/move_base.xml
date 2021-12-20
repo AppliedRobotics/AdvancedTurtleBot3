@@ -15,7 +15,7 @@
     
     <!--<param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/> 
 -->
-    <param name="TrajectoryPlannerROS/max_rotational_vel" value="0.4"/>
+    <param name="TrajectoryPlannerROS/max_rotational_vel" value="0.6"/>
     <param name="TrajectoryPlannerROS/min_rotational_vel" value="0.09"/>
     <param name="TrajectoryPlannerROS/acc_lim_th" value="0.2"/>
     
