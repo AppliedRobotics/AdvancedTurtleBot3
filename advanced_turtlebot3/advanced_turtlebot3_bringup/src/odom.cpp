@@ -11,13 +11,13 @@ double th = 0.0;
 double VX = 0;
 double VTH = 0;
 
-double vx = 0.0;
-double vy = 0.0;
+double vleft = 0.0;
+double vright = 0.0;
 double vth = 0.0;
 
 void cbMessage(const geometry_msgs::Vector3 &arr) {
-  vx  = arr.x;
-  vth = arr.y;
+  vleft  = arr.x;
+  vright = arr.y;
 
 }
 
@@ -33,18 +33,18 @@ int main(int argc, char** argv){
   ros::Time current_time, last_time;
   current_time = ros::Time::now();
   last_time = ros::Time::now();
-    ROS_INFO("LOL");
-  ros::Rate r(100);
+    ROS_INFO("Odom init");
+  ros::Rate r(10);
   while(n.ok()){
 
     ros::spinOnce();              
     current_time = ros::Time::now();
 
-    double temp1 = (0.033 * (vx + vth)) / 2;
-    double temp2 = (0.033 * (vth - vx)) / 0.155;
+    double temp1 = (0.033 * (vleft + vright)) / 2;
+    double temp2 = (0.033 * (vright - vleft)) / 0.155;
 
-    double delta_s = temp1 * 0.01;
-    double delta_a = temp2 * 0.01;
+    double delta_s = temp1 * 0.1;
+    double delta_a = temp2 * 0.1;
 
     th += delta_a;
     x += (delta_s * cos(th));
@@ -63,9 +63,9 @@ int main(int argc, char** argv){
 
     //set the velocity
     odom.child_frame_id = "base_footprint";
-    odom.twist.twist.linear.x = vx;
-    odom.twist.twist.linear.y = vy;
-    odom.twist.twist.angular.z = vth;
+    odom.twist.twist.linear.x = temp1;
+    odom.twist.twist.linear.y = 0;
+    odom.twist.twist.angular.z = temp2;
 
     //publish the message
     odom_pub.publish(odom);
